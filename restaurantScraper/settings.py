@@ -10,8 +10,8 @@
 
 BOT_NAME = 'tutorial'
 
-SPIDER_MODULES = ['tutorial.spiders']
-NEWSPIDER_MODULE = 'tutorial.spiders'
+SPIDER_MODULES = ['restaurantScraper.spiders']
+NEWSPIDER_MODULE = 'restaurantScraper.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
