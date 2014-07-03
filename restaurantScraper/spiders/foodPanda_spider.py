@@ -57,14 +57,12 @@ class DmozSpider(scrapy.Spider):
                         yield scrapy.Request(restaurant_menu_url, callback=self.parse)
 
         else:
-            regex = re.compile('Rs\.([0-9.]*)\.[0-9]*')
-
             resp = response.xpath('//div[@class="restInfoDetails"]')[0]
             resp = resp.xpath('h1/text()')
 
-            restName = resp.extract()
-            restName = ''.join(restName)
-            restName = restName.strip()
+            rest_name = resp.extract()
+            rest_name = ''.join(rest_name)
+            rest_name = rest_name.strip()
             if menuUrl.match(response.url):
                 for sel in response.xpath('//tr[@class="prdLi1"]'):
                     name = sel.xpath('td[1]/span/text()').extract();
@@ -81,7 +79,7 @@ class DmozSpider(scrapy.Spider):
                         item = MenuItem()
                         item['name'] = name;
                         item['price'] = price;
-                        item['restName'] = restName;
+                        item['restName'] = rest_name;
                         print 'itemName : ',
                         print name
                         yield item
